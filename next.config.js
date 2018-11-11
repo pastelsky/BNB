@@ -4,3 +4,7 @@ module.exports = withSass({
     includePaths: ['./node_modules', './node_modules/grommet/node_modules']
   }
 })
+
+exports.exportPathMap = {
+  '/': { page: '/' }
+}

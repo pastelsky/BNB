@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Layout from '../../components/Layout'
-import { TeamSection } from './components/TeamSection'
-import { TestimonialsSection } from './components/TestimonialsSection'
-import { HowItWorksSection } from './components/HowItWorksSection'
-import { HomepageHero } from './components/HomepageHeroSection'
+import TeamSection from '../../components/TeamSection'
+import TestimonialsSection from '../../components/TestimonialsSection'
+import HowItWorksSection from '../../components/HowItWorksSection'
+import HomepageHero from '../../components/HomepageHeroSection'
 import { getHero, getHowItWorksSection, getTeamSection, getTestimonialsSection } from '../../utils/contentful'
 
 import './index.scss'
@@ -98,7 +98,7 @@ class Index extends Component {
     },
     testimonialsSection: {
       testimonials: [],
-    }
+    },
   }
 
   componentDidMount() {
