@@ -36,6 +36,7 @@ class Layout extends Component {
       <App>
         <Head>
           <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </Head>
         <Header>
           <Image src={ header.logo.url }/>
