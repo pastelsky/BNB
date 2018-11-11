@@ -1,0 +1,28 @@
+{
+  "name": "bread-n-butter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "yarn run build && next export"
+  },
+  "dependencies": {
+    "@contentful/rich-text-html-renderer": "^10.0.1",
+    "@contentful/rich-text-types": "^10.0.1",
+    "contentful": "^7.0.5",
+    "contentful-resolve-response": "^1.1.4",
+    "grommet": "^1.13.0",
+    "grommet-icons": "^3.2.0",
+    "next": "^7.0.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "styled-components": "^4.0.3"
+  },
+  "devDependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "node-sass": "^4.10.0"
+  }
+}
