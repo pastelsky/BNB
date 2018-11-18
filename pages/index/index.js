@@ -4,7 +4,14 @@ import TeamSection from '../../components/TeamSection'
 import TestimonialsSection from '../../components/TestimonialsSection'
 import HowItWorksSection from '../../components/HowItWorksSection'
 import HomepageHero from '../../components/HomepageHeroSection'
-import { getHero, getHowItWorksSection, getTeamSection, getTestimonialsSection } from '../../utils/contentful'
+import {
+  getHeader,
+  getHero,
+  getHowItWorksSection,
+  getTeamSection,
+  getTestimonialsSection
+} from '../../utils/contentful'
+import { Element } from 'react-scroll'
 
 import './index.scss'
 
@@ -99,29 +106,42 @@ class Index extends Component {
     testimonialsSection: {
       testimonials: [],
     },
+    header: {
+      logo: {},
+      headerLinks: [],
+    }
   }
 
   componentDidMount() {
     Promise.all([
       getHero(),
+      getHeader(),
       getHowItWorksSection(),
       getTeamSection(),
       getTestimonialsSection(),
     ])
       .then(result => {
-        const [hero, howItWorksSection, teamSection, testimonialsSection] = result
-        this.setState({hero, howItWorksSection, teamSection, testimonialsSection})
+        const [hero, header, howItWorksSection, teamSection, testimonialsSection] = result
+        this.setState({hero, header, howItWorksSection, teamSection, testimonialsSection})
       })
   }
 
   render() {
-    const {hero, howItWorksSection, teamSection, testimonialsSection} = this.state
+    const {hero,header, howItWorksSection, teamSection, testimonialsSection} = this.state
     return (
       <Layout>
-        <HomepageHero hero={ hero }/>
-        <HowItWorksSection howItWorks={ howItWorksSection }/>
-        <TeamSection team={ teamSection }/>
-        <TestimonialsSection testimonials={ testimonialsSection }/>
+        <Element name="home">
+          <HomepageHero hero={ hero } logo={ header.logo }/>
+        </Element>
+        <Element name={ howItWorksSection.id }>
+          <HowItWorksSection howItWorks={ howItWorksSection }/>
+        </Element>
+        <Element name={ teamSection.id }>
+          <TeamSection team={ teamSection }/>
+        </Element>
+        <Element name={ testimonialsSection.id }>
+          <TestimonialsSection testimonials={ testimonialsSection }/>
+        </Element>
       </Layout>
     )
   }

@@ -19,7 +19,7 @@ function getEntriesByType(type) {
 
 export function getHeader() {
   return getEntriesByType('header')
-    .then(res => ({
+    .then(res => console.log('res', res) || ({
       ...res[0],
       logo: res[0].logo.fields.file,
       headerLinks: res[0].headerLinks.map(h => h.fields)

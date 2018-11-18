@@ -1,49 +1,38 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Hero from 'grommet/components/Hero'
 import Box from 'grommet/components/Box'
 import Headline from 'grommet/components/Headline'
 import Image from 'grommet/components/Image'
+import Button from 'grommet/components/Button'
+import Header from 'grommet/components/Header'
 
 export default class HomepageHero extends Component {
   render() {
-    const { hero } = this.props
-    const heroImg = (<Image src={ hero.backgroundImage.url } fit="cover"/>)
-    return <Hero background={heroImg}>
-      <Box
-        direction='row'
-        justify='center'
-        align='center'
-      >
-        <Box
-          basis='1/2'
-          align='start'
-          pad='medium'
-        >
-          <h1>
-            <Headline size="medium" strong className="homepage__hero-text">
-              {hero.title}
-            </Headline>
-          </h1>
-          <h2>
-            <Headline strong size="small" className="homepage__hero-text">
-              {hero.subTitle}
-            </Headline>
-          </h2>
-        </Box>
-        <Box
-          basis='1/2'
-          align='start'
-          pad='medium'
-        >
+    const {hero, logo} = this.props
+
+    return <div style={ {backgroundImage: `url(${ hero.backgroundImage.url })`} } className="hero-section">
+      <div className="hero-section__shade"/>
+      <div className="hero-section__content section__content">
+        <Image className="hero-section__logo" src={ logo.url }/>
+        <div>
           <iframe
-            src={hero.videoUrl}
+            src={ hero.videoUrl }
             width="100%"
-            height="360"
+            height="320"
             frameBorder="0"
             allowFullScreen
+            className="hero-video"
           />
-        </Box>
-      </Box>
-    </Hero>
+        </div>
+        <div className="hero-section__text-section">
+          <h1 className="hero-section__title">
+            { hero.title }
+          </h1>
+          <h2 className="hero-section__sub-title">
+            { hero.subTitle }
+          </h2>
+        </div>
+      </div>
+    </div>
   }
 }

@@ -9,9 +9,57 @@ import Menu from 'grommet/components/Menu'
 import Anchor from 'grommet/components/Anchor'
 import Footer from 'grommet/components/Footer'
 import Paragraph from 'grommet/components/Paragraph'
+import { Link } from 'react-scroll'
 
 import 'grommet/scss/vanilla/index.scss'
 import { getHeader } from '../utils/contentful'
+import './Layout.scss'
+
+function ScrollLink({scrollId, children, externalLink}) {
+  if (externalLink) {
+    return (
+      <Anchor href={ scrollId || externalLink }>
+        { children }
+      </Anchor>
+    )
+  } else {
+    return (
+      <Link
+        activeClass="header-link-container--active"
+        to={ scrollId }
+        spy={ true }
+        smooth="easeOutQuart"
+        duration={ 500 }
+        className="header-link-container"
+        isDynamic={ true }
+      >
+        <div className="header-blip"/>
+        <Anchor href={ scrollId || externalLink } className="header-link">
+          { children }
+        </Anchor>
+        <div className="header-bloop"/>
+      </Link>
+    )
+  }
+}
+
+function Nav({headerLinks}) {
+  return (
+    <nav className="navigation">
+      <Menu dropAlign={ {'right': 'right'} } direction="row">
+        { headerLinks.map(link => (
+          <ScrollLink
+            key={ link.name }
+            scrollId={ link.scrollId }
+            externalLink={ link.externalLink }
+          >
+            { link.name }
+          </ScrollLink>
+        )) }
+      </Menu>
+    </nav>
+  )
+}
 
 class Layout extends Component {
   state = {
@@ -33,28 +81,14 @@ class Layout extends Component {
     const {header} = this.state
 
     return (
-      <App>
+      <App centered={ false }>
         <Head>
           <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet"/>
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </Head>
-        <Header>
-          <Image src={ header.logo.url }/>
-          <Box
-            flex={ true }
-            justify='end'
-            direction='row'
-            responsive={ false }
-          >
-            <Menu dropAlign={ {'right': 'right'} } direction="row">
-              { header.headerLinks.map(link => (
-                <Anchor key={ link.name } href={ link.scrollId || link.externalLink }>
-                  { link.name }
-                </Anchor>
-              )) }
-            </Menu>
-          </Box>
+        <Header className="header">
         </Header>
+        <Nav headerLinks={ header.headerLinks }/>
         { children }
         <Footer justify='between'>
           <Title>

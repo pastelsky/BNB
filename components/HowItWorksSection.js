@@ -8,27 +8,25 @@ export default class HowItWorksSection extends Component {
   render() {
     const {howItWorks} = this.props
     return (
-      <div id={ howItWorks.id }>
-        <Section>
-          <Heading tag="h2">
-            { howItWorks.title }
-          </Heading>
-          <div>
-            <Box direction="row">
-              { howItWorks.steps.map((step) => (
-                <Card
-                  textSize="small"
-                  key={ step.title }
-                  thumbnail={ step.photo.url }
-                  label={ step.stepLabel }
-                  heading={ step.title }
-                  description={ <span dangerouslySetInnerHTML={ {__html: step.description} }/> }
-                  contentPad='none'
-                />
-              )) }
-            </Box>
-          </div>
-        </Section>
+      <div className="section__content">
+        <Heading tag="h2">
+          { howItWorks.title }
+        </Heading>
+        <div>
+          <Box direction="row">
+            { howItWorks.steps.map((step) => (
+              <Card
+                textSize="small"
+                key={ step.title }
+                thumbnail={ step.photo.url }
+                label={ step.stepLabel }
+                heading={ step.title }
+                description={ <span dangerouslySetInnerHTML={ {__html: step.description} }/> }
+                contentPad='none'
+              />
+            )) }
+          </Box>
+        </div>
       </div>
     )
   }

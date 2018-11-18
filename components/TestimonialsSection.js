@@ -8,8 +8,7 @@ import Paragraph from 'grommet/components/Paragraph'
 export default class TestimonialsSection extends Component {
   render() {
     const {testimonials} = this.props
-    return <div id={testimonials.id}>
-      <Section>
+    return <div className="section__content">
         <Heading tag="h2">
           { testimonials.title }
         </Heading>
@@ -38,7 +37,6 @@ export default class TestimonialsSection extends Component {
             ))
           }
         </Carousel>
-      </Section>
-    </div>
+      </div>
   }
 }
