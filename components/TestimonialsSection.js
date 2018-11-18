@@ -9,9 +9,9 @@ export default class TestimonialsSection extends Component {
   render() {
     const {testimonials} = this.props
     return <div className="section__content">
-        <Heading tag="h2">
+      <h2 className="section__heading">
           { testimonials.title }
-        </Heading>
+        </h2>
         <Carousel>
           {
             testimonials.testimonials.map(testimonial => (

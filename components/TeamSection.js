@@ -9,9 +9,9 @@ export default class TeamSection extends Component {
   render() {
     const {team} = this.props
     return <div className="section__content">
-      <Heading tag="h2">
+      <h2 className="section__heading">
         { team.title }
-      </Heading>
+      </h2>
       <Tiles
         fill={ false }
         flush={ false }

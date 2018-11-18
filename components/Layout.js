@@ -81,9 +81,10 @@ class Layout extends Component {
     const {header} = this.state
 
     return (
-      <App centered={ false }>
+      <div centered={ false }>
         <Head>
-          <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400" rel="stylesheet" />
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </Head>
         <Header className="header">
@@ -111,7 +112,7 @@ class Layout extends Component {
             </Menu>
           </Box>
         </Footer>
-      </App>
+      </div>
     )
   }
 }

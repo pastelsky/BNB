@@ -9,9 +9,9 @@ export default class HowItWorksSection extends Component {
     const {howItWorks} = this.props
     return (
       <div className="section__content">
-        <Heading tag="h2">
+        <h2 className="section__heading">
           { howItWorks.title }
-        </Heading>
+        </h2>
         <div>
           <Box direction="row">
             { howItWorks.steps.map((step) => (
