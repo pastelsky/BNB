@@ -61,6 +61,19 @@ export function getTeamSection() {
     }))
 }
 
+
+export function getPartnersSection() {
+  return getEntriesByType('partners')
+    .then(res => ({
+      ...res[0],
+      partners: res[0].partners
+        .map(partner => partner.fields)
+        .map(partner => ({
+          url: partner.file.url,
+        }))
+    }))
+}
+
 export function getTestimonialsSection() {
   return getEntriesByType('testimonials')
     .then(res => ({
@@ -71,4 +84,4 @@ export function getTestimonialsSection() {
     }))
 }
 
-getTestimonialsSection().then(console.log.bind(console))
+getPartnersSection().then(console.log.bind(console))

@@ -9,87 +9,14 @@ import {
   getHero,
   getHowItWorksSection,
   getTeamSection,
-  getTestimonialsSection
+  getPartnersSection
 } from '../../utils/contentful'
 import { Element } from 'react-scroll'
 
 import './index.scss'
+import FormSection from '../../components/FormSection'
+import PartnersSection from '../../components/PartnersSection'
 
-const homepage = {
-  hero: {
-    background: 'https://images.unsplash.com/photo-1509744445554-d5cdda81d0bd?ixlib=rb-0.3.5&s=9121f5af1a245817863c9a64ea71b1f5&auto=format&fit=crop&w=2850&q=80',
-    title: 'Join us in reducing food waste',
-    subtext: 'Here\'s a two line text that explains things better',
-    video: 'https://player.vimeo.com/video/97589595?color=ffffff&title=0&byline=0&portrait=0',
-  },
-  howItWorks: {
-    title: 'How it works',
-    steps: [
-      {
-        img: 'https://image.flaticon.com/icons/svg/149/149444.svg',
-        label: 'Step 1',
-        title: 'Do something',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      },
-      {
-        img: 'https://image.flaticon.com/icons/svg/149/149444.svg',
-        label: 'Step 2',
-        title: 'Do something more',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      },
-      {
-        img: 'https://image.flaticon.com/icons/svg/149/149444.svg',
-        label: 'Step 3',
-        title: 'Do even more',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      }
-    ]
-  },
-  team: {
-    title: 'The team',
-    members: [
-      {
-        name: 'Name 1',
-        photo: 'https://tinyfac.es/data/avatars/475605E3-69C5-4D2B-8727-61B7BB8C4699-500w.jpeg',
-      },
-      {
-        name: 'Name 2',
-        photo: 'https://d3iw72m71ie81c.cloudfront.net/male-5.jpg',
-      },
-      {
-        name: 'Name 3',
-        photo: 'https://d3iw72m71ie81c.cloudfront.net/male-77.jpg'
-      },
-      {
-        name: 'Name 4',
-        photo: 'https://d3iw72m71ie81c.cloudfront.net/female-20.jpeg'
-      }
-    ]
-  },
-  testimonials: {
-    title: 'What others have to say...',
-    items: [
-      {
-        img: 'https://image.flaticon.com/icons/svg/149/149444.svg',
-        name: 'https://image.flaticon.com/icons/svg/149/149444.svg',
-        designation: 'Step 1',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      },
-      {
-        img: 'https://image.flaticon.com/icons/svg/149/149444.svg',
-        name: 'Step 2',
-        designation: 'Do something more',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      },
-      {
-        img: 'https://image.flaticon.com/icons/svg/149/149444.svg',
-        name: 'Step 3',
-        designation: 'Do something more',
-        review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      }
-    ]
-  },
-}
 
 class Index extends Component {
   state = {
@@ -103,8 +30,8 @@ class Index extends Component {
     teamSection: {
       members: [],
     },
-    testimonialsSection: {
-      testimonials: [],
+    partnersSection: {
+      partners: [],
     },
     header: {
       logo: {},
@@ -118,30 +45,36 @@ class Index extends Component {
       getHeader(),
       getHowItWorksSection(),
       getTeamSection(),
-      getTestimonialsSection(),
+      getPartnersSection(),
     ])
       .then(result => {
-        const [hero, header, howItWorksSection, teamSection, testimonialsSection] = result
-        this.setState({hero, header, howItWorksSection, teamSection, testimonialsSection})
+        const [hero, header, howItWorksSection, teamSection, partnersSection] = result
+        this.setState({hero, header, howItWorksSection, teamSection, partnersSection})
       })
   }
 
   render() {
-    const {hero,header, howItWorksSection, teamSection, testimonialsSection} = this.state
+    const {hero, header, howItWorksSection, teamSection, partnersSection} = this.state
     return (
       <Layout>
         <Element name="home">
-          <HomepageHero hero={ hero } logo={ header.logo }/>
+          <HomepageHero hero={ hero } logo={ header.logo } howItWorksId={ howItWorksSection.id }/>
         </Element>
         <Element name={ howItWorksSection.id }>
           <HowItWorksSection howItWorks={ howItWorksSection }/>
         </Element>
+        <Element name="form-section">
+          <FormSection/>
+        </Element>
+        <Element name={ partnersSection.id }>
+          <PartnersSection partners={ partnersSection }/>
+        </Element>
         <Element name={ teamSection.id }>
           <TeamSection team={ teamSection }/>
         </Element>
-        <Element name={ testimonialsSection.id }>
-          <TestimonialsSection testimonials={ testimonialsSection }/>
-        </Element>
+        {/*<Element name={ testimonialsSection.id }>*/ }
+        {/*<TestimonialsSection testimonials={ testimonialsSection }/>*/ }
+        {/*</Element>*/ }
       </Layout>
     )
   }
