@@ -92,9 +92,7 @@ class Layout extends Component {
         <Nav headerLinks={ header.headerLinks }/>
         { children }
         <Footer justify='between'>
-          <Title>
-            Title
-          </Title>
+          <footer>
           <Box direction='row' align='center' pad={ {'between': 'medium'} }>
             <Paragraph margin='none'>
               © { new Date().getFullYear() } Bread and Butter
@@ -111,6 +109,7 @@ class Layout extends Component {
               </Anchor>
             </Menu>
           </Box>
+          </footer>
         </Footer>
       </div>
     )

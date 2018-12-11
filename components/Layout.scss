@@ -79,3 +79,12 @@ a, a:hover {
     transform: scaleY(0.96);
   }
 }
+
+footer {
+  background: #403e39;
+  padding: 10vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+}

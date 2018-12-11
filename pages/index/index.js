@@ -9,13 +9,14 @@ import {
   getHero,
   getHowItWorksSection,
   getTeamSection,
-  getPartnersSection
+  getPartnersSection, getFAQsSection
 } from '../../utils/contentful'
 import { Element } from 'react-scroll'
 
 import './index.scss'
 import FormSection from '../../components/FormSection'
 import PartnersSection from '../../components/PartnersSection'
+import FAQSection from '../../components/FAQSection'
 
 
 class Index extends Component {
@@ -29,6 +30,9 @@ class Index extends Component {
     },
     teamSection: {
       members: [],
+    },
+    faqSection: {
+      faqs:[],
     },
     partnersSection: {
       partners: [],
@@ -45,16 +49,17 @@ class Index extends Component {
       getHeader(),
       getHowItWorksSection(),
       getTeamSection(),
+      getFAQsSection(),
       getPartnersSection(),
     ])
       .then(result => {
-        const [hero, header, howItWorksSection, teamSection, partnersSection] = result
-        this.setState({hero, header, howItWorksSection, teamSection, partnersSection})
+        const [hero, header, howItWorksSection, teamSection, faqSection, partnersSection] = result
+        this.setState({hero, header, howItWorksSection, teamSection, faqSection, partnersSection})
       })
   }
 
   render() {
-    const {hero, header, howItWorksSection, teamSection, partnersSection} = this.state
+    const {hero, header, howItWorksSection, teamSection, faqSection, partnersSection} = this.state
     return (
       <Layout>
         <Element name="home">
@@ -68,6 +73,9 @@ class Index extends Component {
         </Element>
         <Element name={ partnersSection.id }>
           <PartnersSection partners={ partnersSection }/>
+        </Element>
+        <Element name={ faqSection.id }>
+          <FAQSection faqSection={ faqSection }/>
         </Element>
         <Element name={ teamSection.id }>
           <TeamSection team={ teamSection }/>

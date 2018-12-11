@@ -84,4 +84,18 @@ export function getTestimonialsSection() {
     }))
 }
 
-getPartnersSection().then(console.log.bind(console))
+export function getFAQsSection() {
+  return getEntriesByType('faqSection')
+    .then(res => ({
+      ...res[0],
+      faqs: res[0].faQs
+        .map(t => t.fields)
+        .map(t => ({
+          ...t,
+          question: documentToHtmlString(t.question),
+          answer: documentToHtmlString(t.answer)
+        }))
+    }))
+}
+
+getFAQsSection().then(console.log.bind(console))

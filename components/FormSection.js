@@ -12,8 +12,8 @@ export default class FormSection extends Component {
         Reach out to us
       </h2>
       <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdFUdecEmImArSI2Om2I5DQnvYvlhyP74nz-N0OJsIcXQMxbw/viewform?embedded=true"
-        width="700" height="520" frameBorder="0" marginHeight="0" marginWidth="0">Loading...
+        src="https://docs.google.com/forms/d/e/1FAIpQLSc964LtxJxtRPkNJ75RX3E3fFo226v9uBAUYdkmo-ZtkhQZkQ/viewform?embedded=true"
+        width="700" height="820" frameBorder="0" marginHeight="0" marginWidth="0">Loading...
       </iframe>
     </div>
   }
