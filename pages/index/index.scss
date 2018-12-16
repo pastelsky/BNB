@@ -1,10 +1,9 @@
 body, html {
-  background: #F7F6F3;
   font-family: IBM Plex Sans;
   font-weight: 300;
 }
 
-h1,h2,h3,h4 {
+h1, h2, h3, h4 {
   font-family: PT Serif;
   font-weight: bold;
 }
@@ -17,9 +16,9 @@ p {
   line-height: 1.7;
 }
 
-.homepage__hero-text{
+.homepage__hero-text {
   color: white;
-  text-shadow: 0 0 20px rgba(0,0,0,0.3);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-section {
@@ -136,5 +135,30 @@ p {
   h3 {
     margin-top: 1rem;
     margin-bottom: 0;
+  }
+}
+
+.generic-exlplaination-section {
+  display: flex;
+}
+
+.generic-exlplaination-section__body {
+  width: 50%;
+  flex-grow: 1;
+}
+
+.generic-exlplaination-section__img {
+  max-width: 45%;
+  min-width: 30%;
+  padding-left: 5%;
+  align-self: flex-end;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 70vh;
   }
 }

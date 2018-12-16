@@ -9,7 +9,7 @@ import {
   getHero,
   getHowItWorksSection,
   getTeamSection,
-  getPartnersSection, getFAQsSection, getGallerySection
+  getPartnersSection, getFAQsSection, getGallerySection, getExplainationSections
 } from '../../utils/contentful'
 import { Element } from 'react-scroll'
 
@@ -18,6 +18,7 @@ import FormSection from '../../components/FormSection'
 import PartnersSection from '../../components/PartnersSection'
 import FAQSection from '../../components/FAQSection'
 import GallerySection from '../../components/GallerySection'
+import GenericExplainationSection from '../../components/GenericExplainationSection'
 
 
 class Index extends Component {
@@ -26,14 +27,12 @@ class Index extends Component {
     hero: {
       backgroundImage: {}
     },
-    howItWorksSection: {
-      steps: []
-    },
+    explanations: [],
     teamSection: {
       members: [],
     },
     faqSection: {
-      faqs:[],
+      faqs: [],
     },
     partnersSection: {
       partners: [],
@@ -51,25 +50,36 @@ class Index extends Component {
     Promise.all([
       getHero(),
       getHeader(),
-      getHowItWorksSection(),
+      getExplainationSections(),
       getTeamSection(),
       getFAQsSection(),
       getGallerySection(),
       getPartnersSection(),
     ])
       .then(result => {
-        const [hero, header, howItWorksSection, teamSection, faqSection, gallery, partnersSection] = result
-        this.setState({hero, header, howItWorksSection, teamSection, faqSection, gallery, partnersSection})
+        const [hero, header, explanations, teamSection, faqSection, gallery, partnersSection] = result
+        this.setState({hero, header, explanations, teamSection, faqSection, gallery, partnersSection})
       })
   }
 
   render() {
-    const {hero, header, howItWorksSection, teamSection, faqSection, gallery, partnersSection} = this.state
+    const {hero, header, explanations, teamSection, faqSection, gallery, partnersSection} = this.state
+    console.log('explanations', explanations)
     return (
       <Layout>
         <Element name="home">
-          <HomepageHero hero={ hero } logo={ header.logo } howItWorksId={ howItWorksSection.id }/>
+          <HomepageHero hero={ hero } logo={ header.logo } howItWorksId={ explanations.length && explanations[0].id }/>
         </Element>
+        { explanations.map(explanationSection => (
+          <Element key={ explanationSection.id } name={ explanationSection.id }>
+            <GenericExplainationSection
+              className={explanationSection.id}
+              title={ explanationSection.title }
+              body={ explanationSection.body }
+              image={ explanationSection.image }
+            />
+          </Element>
+        )) }
         <Element name="form-section">
           <FormSection/>
         </Element>

@@ -80,7 +80,7 @@ export function getTestimonialsSection() {
       ...res[0],
       testimonials: res[0].testimonials
         .map(t => t.fields)
-        .map(t =>({ ...t, review: documentToHtmlString(t.review)}))
+        .map(t => ({...t, review: documentToHtmlString(t.review)}))
     }))
 }
 
@@ -104,9 +104,22 @@ export function getGallerySection() {
       ...res[0],
       images: res[0].images
         .map(t => t.fields)
-        .map(({ file }) => ({src: file.url, width: file.details.image.width, height: file.details.image.height }))
+        .map(({file}) => ({src: file.url, width: file.details.image.width, height: file.details.image.height}))
     }))
 }
 
+export function getExplainationSections() {
+  return getEntriesByType('theProblemSection') // legacy reasons :\
+    .then(results =>
+      results.map(
+        res => ({
+          ...res,
+          body: documentToHtmlString(res.body),
+          image: res.image ? res.image.fields.file.url : undefined,
+        })
+      )
+    )
+}
 
-getGallerySection().then(console.log.bind(console))
+
+getExplainationSections().then(console.log.bind(console))
