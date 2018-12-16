@@ -81,10 +81,12 @@ a, a:hover {
 }
 
 footer {
-  background: #403e39;
+  background: #363c40;
   padding: 10vh 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: right;
+  text-align: center;
+  color: rgba(255,255,255,0.9);
+  margin: auto;
 }

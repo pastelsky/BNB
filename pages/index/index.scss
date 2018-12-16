@@ -48,7 +48,22 @@ p {
 
 .section__heading {
   font-weight: bold;
-  font-size: 2.4rem;
+  font-size: 2.7rem;
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.section__heading:after {
+  content: '';
+  border-top: 20px solid  #444;
+  margin: 0 20px 0 0;
+  flex: 1 0 20px;
+}
+
+.section__heading:after {
+  margin: 0 0 0 20px;
 }
 
 .hero-section__content {

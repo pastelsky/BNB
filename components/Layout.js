@@ -84,7 +84,7 @@ class Layout extends Component {
       <div centered={ false }>
         <Head>
           <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet"/>
-          <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400" rel="stylesheet"/>
           <meta name="viewport" content="width=device-width, initial-scale=1"/>
         </Head>
         <Header className="header">
@@ -93,22 +93,7 @@ class Layout extends Component {
         { children }
         <Footer justify='between'>
           <footer>
-          <Box direction='row' align='center' pad={ {'between': 'medium'} }>
-            <Paragraph margin='none'>
-              © { new Date().getFullYear() } Bread and Butter
-            </Paragraph>
-            <Menu direction='row' size='small' dropAlign={ {'right': 'right'} }>
-              <Anchor href='#'>
-                Support
-              </Anchor>
-              <Anchor href='#'>
-                Contact
-              </Anchor>
-              <Anchor href='#'>
-                About
-              </Anchor>
-            </Menu>
-          </Box>
+            © { new Date().getFullYear() } Bread and Butter
           </footer>
         </Footer>
       </div>
