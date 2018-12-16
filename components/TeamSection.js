@@ -8,6 +8,11 @@ import Image from 'grommet/components/Image'
 export default class TeamSection extends Component {
   render() {
     const {team} = this.props
+
+    if (!team.members.length) {
+      return null
+    }
+
     return <div className="section__content">
       <h2 className="section__heading">
         { team.title }

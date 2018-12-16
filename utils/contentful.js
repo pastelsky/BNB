@@ -98,4 +98,15 @@ export function getFAQsSection() {
     }))
 }
 
-getFAQsSection().then(console.log.bind(console))
+export function getGallerySection() {
+  return getEntriesByType('gallery')
+    .then(res => ({
+      ...res[0],
+      images: res[0].images
+        .map(t => t.fields)
+        .map(({ file }) => ({src: file.url, width: file.details.image.width, height: file.details.image.height }))
+    }))
+}
+
+
+getGallerySection().then(console.log.bind(console))

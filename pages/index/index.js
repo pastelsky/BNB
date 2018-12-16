@@ -9,7 +9,7 @@ import {
   getHero,
   getHowItWorksSection,
   getTeamSection,
-  getPartnersSection, getFAQsSection
+  getPartnersSection, getFAQsSection, getGallerySection
 } from '../../utils/contentful'
 import { Element } from 'react-scroll'
 
@@ -17,6 +17,7 @@ import './index.scss'
 import FormSection from '../../components/FormSection'
 import PartnersSection from '../../components/PartnersSection'
 import FAQSection from '../../components/FAQSection'
+import GallerySection from '../../components/GallerySection'
 
 
 class Index extends Component {
@@ -40,6 +41,9 @@ class Index extends Component {
     header: {
       logo: {},
       headerLinks: [],
+    },
+    gallery: {
+      images: []
     }
   }
 
@@ -50,23 +54,21 @@ class Index extends Component {
       getHowItWorksSection(),
       getTeamSection(),
       getFAQsSection(),
+      getGallerySection(),
       getPartnersSection(),
     ])
       .then(result => {
-        const [hero, header, howItWorksSection, teamSection, faqSection, partnersSection] = result
-        this.setState({hero, header, howItWorksSection, teamSection, faqSection, partnersSection})
+        const [hero, header, howItWorksSection, teamSection, faqSection, gallery, partnersSection] = result
+        this.setState({hero, header, howItWorksSection, teamSection, faqSection, gallery, partnersSection})
       })
   }
 
   render() {
-    const {hero, header, howItWorksSection, teamSection, faqSection, partnersSection} = this.state
+    const {hero, header, howItWorksSection, teamSection, faqSection, gallery, partnersSection} = this.state
     return (
       <Layout>
         <Element name="home">
           <HomepageHero hero={ hero } logo={ header.logo } howItWorksId={ howItWorksSection.id }/>
-        </Element>
-        <Element name={ howItWorksSection.id }>
-          <HowItWorksSection howItWorks={ howItWorksSection }/>
         </Element>
         <Element name="form-section">
           <FormSection/>
@@ -76,6 +78,9 @@ class Index extends Component {
         </Element>
         <Element name={ faqSection.id }>
           <FAQSection faqSection={ faqSection }/>
+        </Element>
+        <Element name={ gallery.id }>
+          <GallerySection title={ gallery.title } images={ gallery.images }/>
         </Element>
         <Element name={ teamSection.id }>
           <TeamSection team={ teamSection }/>

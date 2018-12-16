@@ -10,6 +10,11 @@ import Image from 'grommet/components/Image'
 export default class HowItWorksSection extends Component {
   render() {
     const {partners} = this.props
+
+    if (!partners.partners.length) {
+      return null
+    }
+
     return (
       <div className="section__content">
         <h2 className="section__heading">
